@@ -1,0 +1,26 @@
+#define MOTION_SENSOR_PIN  32  
+#define LED_PIN            16  
+
+int motionStateCurrent  = LOW; 
+int motionStatePrevious = LOW; 
+
+void setup() {
+  Serial.begin(9600);               
+  pinMode(MOTION_SENSOR_PIN, INPUT); 
+  pinMode(LED_PIN, OUTPUT);          
+}
+
+void loop() {
+  motionStatePrevious = motionStateCurrent;             
+  motionStateCurrent  = digitalRead(MOTION_SENSOR_PIN); 
+
+  if (motionStatePrevious == LOW && motionStateCurrent == HIGH) { 
+    Serial.println("Motion detected!, turns LED ON");
+    digitalWrite(LED_PIN, HIGH); // turn on
+
+}
+  else if (motionStatePrevious == HIGH && motionStateCurrent == LOW) { 
+    	Serial.println("Motion stopped!, turns LED OFF");
+    	digitalWrite(LED_PIN, LOW);  // turn off
+  }
+}
