@@ -1,6 +1,6 @@
-#define RELAY_PIN    13 // ESP32 pin GPIO17 that connects to relay
-#define MOISTURE_PIN 34 // ESP32 pin GPIO36 (ADC0) that connects to AOUT pin of moisture sensor
-#define THRESHOLD 2800   // => CHANGE YOUR THRESHOLD HERE
+#define RELAY_PIN    13 
+#define MOISTURE_PIN 34 
+#define THRESHOLD 2800   
 
 void setup() {
   Serial.begin(9600);
@@ -8,7 +8,7 @@ void setup() {
 }
 
 void loop() {
-  int value = analogRead(MOISTURE_PIN); // read the analog value from soild moisture sensor
+  int value = analogRead(MOISTURE_PIN); 
 
   if (value > THRESHOLD) {
     Serial.print("Pôda je suchá  => aktivujem pumpu");
